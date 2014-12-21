@@ -1,0 +1,28 @@
+{
+  "name": "timers",
+  "version": "0.2.0",
+  "homepage": "https://github.com/gastropoda/timers",
+  "authors": [
+    "Artem Baguinski <abaguinski@gmail.com>"
+  ],
+  "description": "timers",
+  "main": "js/main.js",
+  "keywords": [
+    "timer"
+  ],
+  "license": "Public Domain",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper": "~0.9.21",
+    "angular": "~1.2.27",
+    "bootstrap-css": "~3.2.0",
+    "angular-bootstrap": "~0.12.0"
+  }
+}
