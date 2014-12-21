@@ -1,0 +1,47 @@
+body {
+  background: #F5F5F5;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+#window {
+  margin-top: 20px;
+}
+
+.progress {
+  height: 50px;
+}
+
+#time-bar {
+  transition: none;
+}
+
+#time-display {
+  font-size: 48pt;
+  font-weight: bold;
+}
+
+#time-display .dot-ms {
+  opacity: 0.1;
+}
+
+@media(max-width:767px){
+  #elapsed-display, #remaining-display {
+    text-align: center;
+  }
+}
+@media(min-width:768px){
+  #elapsed-display {
+    text-align: right;
+  }
+  #remaining-display {
+    text-align: left;
+  }
+}
+
+/*
+@media(min-width:992px){}
+@media(min-width:1200px){}
+*/
