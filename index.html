@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- ko with: remaining -->
+<title data-bind="text: min_sec">timers</title>
+<!-- /ko -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="vendor/bootstrap-css/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/timers.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container text-center">
+  <div id="window" class="panel panel-default">
+    <div class="panel-body">
+
+      <div class="center-block">
+        <div id="start-buttons" class="btn-group" data-bind="foreach: intervals">
+          <a class="btn btn-default btn-lg invisible"
+            data-bind="text: label, click: $parent.startTimer,
+            css: { invisible: false, 'btn-primary': $parent.isLast($data) }"></a>
+        </div>
+      </div>
+
+      <div id="time-display" class="row">
+        <span id="elapsed-display" class="col-xs-12 col-sm-6" data-bind="with: elapsed">
+          <span class="min" data-bind="text: min">00</span>:<span class="sec" data-bind="text: sec">00</span><span class="dot-ms">.<span class="ms" data-bind="text: ms">000</span></span>
+        </span>
+        <span id="remaining-display" class="col-xs-12 col-sm-6" data-bind="with: remaining">
+          <span class="min" data-bind="text: min">00</span>:<span class="sec" data-bind="text: sec">00</span><span class="dot-ms">.<span class="ms" data-bind="text: ms">000</span></span>
+        </span>
+      </div>
+
+      <div class="progress">
+        <div id="time-bar"
+          class="progress-bar progress-bar-striped"
+          role="progressbar"
+          aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+          data-bind="style: {width: progress()+'%'}, attr: {'aria-valuenow': progress}">
+        </div>
+      </div>
+
+      <div class="btn-group fill-width">
+        <div data-toggle="tooltip" title="Repeat the last timer" data-placement="bottom">
+          <a id="repeat-button"
+            class="btn btn-primary btn-lg disabled"
+            data-bind="css: {disabled: !canRestart()}, click: restart"><span class="glyphicon glyphicon-repeat"></span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>
