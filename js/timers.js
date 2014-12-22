@@ -14,6 +14,16 @@ timersApp.controller("TimersCtrl", function($scope) {
 
 timersApp.filter("time", function() {
   return function(input, format) {
-    return input;
+    if (format) {
+      return input;
+    } else {
+      input = Math.round(input);
+      var remainder = input % 60;
+      if (remainder) {
+        return input + "s";
+      } else {
+        return input/60 + "m";
+      }
+    }
   }
 });
