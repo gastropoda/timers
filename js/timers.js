@@ -1,7 +1,7 @@
 var seconds = 1000;
 var minutes = 60 * seconds;
 
-var timersApp = angular.module("timers", []);
+var timersApp = angular.module("timers", ["ui.bootstrap"]);
 
 timersApp.controller("TimersCtrl", function($scope) {
   $scope.elapsed = 0;

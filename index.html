@@ -16,9 +16,12 @@
 
       <div class="center-block">
         <div id="start-buttons" class="btn-group">
-          <a class="btn btn-default btn-lg" ng-repeat="interval in intervals">
-            {{interval | time}}
-          </a>
+          <a class="btn btn-default btn-lg"
+            ng-click="remaining = 100000"
+            >test me</a>
+          <a class="btn btn-default btn-lg"
+            ng-repeat="interval in intervals"
+            >{{interval | time}}</a>
         </div>
       </div>
 
@@ -52,6 +55,7 @@
   </div>
 </div>
 <script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="js/timers.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+/* angular bootsrap requires this */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 body {
   background: #F5F5F5;
 }
