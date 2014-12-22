@@ -3,8 +3,11 @@ var BrowserWindow = require("browser-window");
 app.on("window-all-closed", app.quit);
 app.on("ready", openTimersWindow);
 
+var mainWin = null;
+
 function openTimersWindow() {
-  new BrowserWindow({
+  mainWin = new BrowserWindow({
     width: 480
-  }).loadUrl("file://" + __dirname + "/../index.html");
+  });
+  mainWin.loadUrl("file://" + __dirname + "/../index.html");
 };
