@@ -17,11 +17,10 @@
       <div class="center-block">
         <div id="start-buttons" class="btn-group">
           <a class="btn btn-default btn-lg"
-            ng-click="remaining = 100000"
-            >test me</a>
-          <a class="btn btn-default btn-lg"
-            ng-repeat="interval in intervals"
-            >{{interval | time}}</a>
+            ng-click="$parent.remaining = interval"
+            ng-repeat="interval in intervals">
+            {{interval | time}}
+          </a>
         </div>
       </div>
 
