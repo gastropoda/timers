@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="timers" ng-controller="TimersCtrl">
 <head>
 <meta charset="utf-8">
-<!-- ko with: remaining -->
-<title data-bind="text: min_sec">timers</title>
-<!-- /ko -->
+<title>{{remaining}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="vendor/bootstrap-css/css/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +15,10 @@
     <div class="panel-body">
 
       <div class="center-block">
-        <div id="start-buttons" class="btn-group" data-bind="foreach: intervals">
-          <a class="btn btn-default btn-lg invisible"
-            data-bind="text: label, click: $parent.startTimer,
-            css: { invisible: false, 'btn-primary': $parent.isLast($data) }"></a>
+        <div id="start-buttons" class="btn-group">
+          <a class="btn btn-default btn-lg" ng-repeat="interval in intervals"
+            data-bind="click: $parent.startTimer, css: { invisible: false, 'btn-primary': $parent.isLast($data) }"
+            >{{interval}}</a>
         </div>
       </div>
 
@@ -53,6 +51,7 @@
     </div>
   </div>
 </div>
-<script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="js/timers.js"></script>
 </body>
 </html>
