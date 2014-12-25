@@ -24,6 +24,10 @@ timersApp.controller("TimersCtrl", function($scope) {
     start = Date.now();
   }
 
+  $scope.progress = function() {
+    return Math.min(100, 100 * (total ? $scope.elapsed / total : 0));
+  }
+
   function updateTimer() {
     $scope.elapsed = Date.now() - start;
     $scope.remaining = total - $scope.elapsed;
