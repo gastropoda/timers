@@ -17,8 +17,7 @@ timersApp.controller("TimersCtrl", function($scope) {
   var total, interval = null, start;
 
   $scope.start = function(time) {
-    total = $scope.remaining = time;
-    $scope.elapsed = 0;
+    total = time;
     if (interval != null)
       clearInterval(interval);
     interval = setInterval(updateTimer, 25);
