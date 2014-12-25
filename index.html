@@ -39,8 +39,10 @@
       <div class="btn-group fill-width">
         <div data-toggle="tooltip" title="Repeat the last timer" data-placement="bottom">
           <a id="repeat-button"
-            class="btn btn-primary btn-lg disabled"
-            data-bind="css: {disabled: !canRestart()}, click: restart"><span class="glyphicon glyphicon-repeat"></span></a>
+            class="btn btn-primary btn-lg"
+            ng-disabled="!restartable"
+            ng-click="restart()"
+            ><span class="glyphicon glyphicon-repeat"></span></a>
         </div>
       </div>
 

@@ -24,8 +24,16 @@ timersApp.controller("TimersCtrl", function($scope) {
     start = Date.now();
   }
 
+  $scope.restart = function() {
+    $scope.start(total);
+  }
+
   Object.defineProperty($scope, "progress", { get: function() {
     return Math.min(100, 100 * (total ? $scope.elapsed / total : 0));
+  }});
+
+  Object.defineProperty($scope, "restartable", { get: function() {
+    return !!total;
   }});
 
   function updateTimer() {
