@@ -13,6 +13,29 @@ timersApp.controller("TimersCtrl", function($scope) {
     60 * seconds,
     30 * seconds,
   ];
+
+  var total, interval = null, start;
+
+  $scope.start = function(time) {
+    total = $scope.remaining = time;
+    $scope.elapsed = 0;
+    if (interval != null)
+      clearInterval(interval);
+    interval = setInterval(updateTimer, 25);
+    start = Date.now();
+  }
+
+  function updateTimer() {
+    $scope.elapsed = Date.now() - start;
+    $scope.remaining = total - $scope.elapsed;
+    if ($scope.remaining <= 0) {
+      $scope.remaining = 0;
+      $scope.elapsed = total;
+      clearInterval(interval);
+      interval = null;
+    }
+    $scope.$apply();
+  }
 });
 
 timersApp.filter("time", function() {
