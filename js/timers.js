@@ -3,7 +3,7 @@ var minutes = 60 * seconds;
 
 var timersApp = angular.module("timers", ["ui.bootstrap", "sound"]);
 
-timersApp.controller("TimersCtrl", function($scope) {
+timersApp.controller("TimersCtrl", ["$scope", "sound", function($scope, sound) {
   $scope.elapsed = 0;
   $scope.remaining = 0;
   $scope.intervals = [
@@ -44,10 +44,11 @@ timersApp.controller("TimersCtrl", function($scope) {
       $scope.elapsed = total;
       clearInterval(interval);
       interval = null;
+      sound.beep();
     }
     $scope.$apply();
   }
-});
+}]);
 
 timersApp.filter("time", function() {
   return function(input, format) {
