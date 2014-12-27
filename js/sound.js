@@ -17,15 +17,15 @@ soundModule.controller("SoundCtrl", function($scope) {
     label: "Aan de slag!",
   }];
 
-  $scope.finalSound = $scope.sounds[0];
+  $scope.selected = $scope.sounds[0];
 
-  $scope.setFinalSound = function(sound) {
-    $scope.finalSound = sound;
+  $scope.select = function(sound) {
+    $scope.selected = sound;
   };
 
-  $scope.playFinalSound = function() {
-    createjs.Sound.play($scope.finalSound.name, $scope.finalSound.options);
+  $scope.play= function() {
+    createjs.Sound.play($scope.selected.name, $scope.selected.options);
   };
 
-  $scope.$on("TimerFinished", $scope.playFinalSound);
+  $scope.$on("TimerFinished", $scope.play);
 });
