@@ -47,7 +47,7 @@
             <a class="btn btn-default btn-lg dropdown-toggle"
               dropdown-toggle><span class="glyphicon glyphicon-music"</span></a>
             <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="sound in sounds">
+              <li ng-repeat="sound in sounds" ng-class="{active: isSelected(sound)}">
               <a ng-click="select(sound) ; play()">{{sound.label}}</a>
               </li>
             </ul>

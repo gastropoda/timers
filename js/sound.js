@@ -23,6 +23,10 @@ soundModule.controller("SoundCtrl", function($scope) {
     $scope.selected = sound;
   };
 
+  $scope.isSelected = function(sound) {
+    return sound === $scope.selected;
+  }
+
   $scope.play= function() {
     createjs.Sound.play($scope.selected.name, $scope.selected.options);
   };
