@@ -36,16 +36,23 @@
       <progressbar class="progress-striped" animate="false" value="progress">
       </progressbar>
 
-      <div class="btn-group fill-width">
-        <div data-toggle="tooltip" title="Repeat the last timer" data-placement="bottom">
+      <div class="center-block">
+        <div class="btn-group">
           <a id="repeat-button"
             class="btn btn-primary btn-lg"
             ng-disabled="!restartable"
             ng-click="restart()"
             ><span class="glyphicon glyphicon-repeat"></span></a>
+          <div class="btn-group" dropdown ng-controller="SoundCtrl">
+            <a class="btn btn-default btn-lg dropdown-toggle"
+              dropdown-toggle><span class="glyphicon glyphicon-music"</span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Bi-bi-biep, bi-bi-biep</a></li>
+              <li><a href="#">Papa: "Aan de slag!"</a></li>
+              <li><a href="#">Dima: "Aan de slag!"</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-
     </div>
   </div>
 </div>
