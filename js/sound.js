@@ -1,6 +1,6 @@
-var soundModule = angular.module("sound", []);
+var soundModule = angular.module("sound", ["ngCookies"]);
 
-soundModule.controller("SoundCtrl", function($scope) {
+soundModule.controller("SoundCtrl", ["$scope", "$cookies", function($scope, $cookies) {
   createjs.Sound.registerSound("snd/beep.ogg", "beep");
   createjs.Sound.registerSound("snd/aan-de-slag.ogg", "papa");
   createjs.Sound.registerSound("snd/ye-ye-yeah.ogg", "dima");
@@ -17,10 +17,11 @@ soundModule.controller("SoundCtrl", function($scope) {
     label: "Aan de slag!",
   }];
 
-  $scope.selected = $scope.sounds[0];
+  $scope.selected = soundByName($cookies.selectedSound) || $scope.sounds[0];
 
   $scope.select = function(sound) {
     $scope.selected = sound;
+    $cookies.selectedSound = sound.name;
   };
 
   $scope.isSelected = function(sound) {
@@ -32,4 +33,8 @@ soundModule.controller("SoundCtrl", function($scope) {
   };
 
   $scope.$on("TimerFinished", $scope.play);
-});
+
+  function soundByName(name) {
+    return $scope.sounds.find(function(sound) { return sound.name === name; });
+  }
+}]);
