@@ -1,10 +1,9 @@
 var soundModule = angular.module("sound", []);
 
-soundModule.factory("sound", function() {
+soundModule.controller("SoundCtrl", function($scope) {
   createjs.Sound.registerSound("snd/beep.ogg", "beep");
-  return {
-    beep: function() {
-      createjs.Sound.play("beep", {loop: 1});
-    }
-  };
+
+  $scope.$on("TimerFinished", function() {
+    createjs.Sound.play("beep", {loop: 1});
+  });
 });
