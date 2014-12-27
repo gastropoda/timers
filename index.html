@@ -47,9 +47,9 @@
             <a class="btn btn-default btn-lg dropdown-toggle"
               dropdown-toggle><span class="glyphicon glyphicon-music"</span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Bi-bi-biep, bi-bi-biep</a></li>
-              <li><a href="#">Aan de slag!</a></li>
-              <li><a href="#">Ye-ye-yeah!</a></li>
+              <li ng-repeat="sound in sounds">
+              <a ng-click="setFinal(sound)">{{sound.label}}</a>
+              </li>
             </ul>
           </div>
         </div>
