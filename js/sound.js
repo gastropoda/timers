@@ -16,13 +16,16 @@ soundModule.controller("SoundCtrl", function($scope) {
     name: "papa",
     label: "Aan de slag!",
   }];
+
   $scope.finalSound = $scope.sounds[0];
 
-  $scope.setFinal = function(sound) {
+  $scope.setFinalSound = function(sound) {
     $scope.finalSound = sound;
   };
 
-  $scope.$on("TimerFinished", function() {
+  $scope.playFinalSound = function() {
     createjs.Sound.play($scope.finalSound.name, $scope.finalSound.options);
-  });
+  };
+
+  $scope.$on("TimerFinished", $scope.playFinalSound);
 });

@@ -48,7 +48,7 @@
               dropdown-toggle><span class="glyphicon glyphicon-music"</span></a>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="sound in sounds">
-              <a ng-click="setFinal(sound)">{{sound.label}}</a>
+              <a ng-click="setFinalSound(sound) ; playFinalSound()">{{sound.label}}</a>
               </li>
             </ul>
           </div>
