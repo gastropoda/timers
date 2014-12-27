@@ -12,6 +12,7 @@ timersApp.controller("TimersCtrl", ["$scope", "sound", function($scope, sound) {
     90 * seconds,
     60 * seconds,
     30 * seconds,
+    1 * seconds,
   ];
 
   var total, interval = null, start;
@@ -36,15 +37,20 @@ timersApp.controller("TimersCtrl", ["$scope", "sound", function($scope, sound) {
     return !!total;
   }});
 
+  $scope.$on("TimerFinished", function() {
+      clearInterval(interval);
+      interval = null;
+  });
+
+  $scope.$on("TimerFinished", sound.beep);
+
   function updateTimer() {
     $scope.elapsed = Date.now() - start;
     $scope.remaining = total - $scope.elapsed;
     if ($scope.remaining <= 0) {
       $scope.remaining = 0;
       $scope.elapsed = total;
-      clearInterval(interval);
-      interval = null;
-      sound.beep();
+      $scope.$emit("TimerFinished");
     }
     $scope.$apply();
   }
