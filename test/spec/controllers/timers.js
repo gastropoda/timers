@@ -1,22 +1,22 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: TimersCtrl', function () {
 
   // load the controller's module
   beforeEach(module('timersApp'));
 
-  var MainCtrl,
-    scope;
+  var TimersCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    TimersCtrl = $controller('TimersCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('starts with both time values 0', function () {
+    expect(scope.elapsed).toBe(0);
+    expect(scope.remaining).toBe(0);
   });
 });
