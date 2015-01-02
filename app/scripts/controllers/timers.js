@@ -30,6 +30,8 @@ angular.module('timersApp').controller('TimersCtrl', function($scope) {
     $scope.start(total);
   };
 
+  $scope.intervalsSubmenuVisible = false;
+
   Object.defineProperty($scope, 'progress', { get: function() {
     return Math.min(100, 100 * (total ? $scope.elapsed / total : 0));
   }});
@@ -79,6 +81,18 @@ angular.module('timersApp').controller('TimersCtrl', function($scope) {
         return minSec + 's';
       } else {
         return min + 'm';
+      }
+    }
+  };
+})
+.directive('focusOn', function($parse) {
+  return {
+    link: {
+      post: function postLink(scope, element, attrs) {
+        var model = $parse(attrs.focusOn);
+        scope.$watch(model, function(on) {
+          if (on) { element[0].focus(); }
+        });
       }
     }
   };
