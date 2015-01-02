@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="timers" ng-controller="TimersCtrl">
+<html lang="en" ng-app="timersApp" ng-controller="TimersCtrl">
 <head>
 <meta charset="utf-8">
 <title>{{remaining | time:"mm:ss"}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="vendor/bootstrap-css/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/timers.css" rel="stylesheet">
+<link href="styles/main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -56,13 +55,15 @@
     </div>
   </div>
 </div>
-<script src="vendor/es6-shim/es6-shim.js"></script>
-<script src="vendor/angular/angular.js"></script>
-<script src="vendor/angular-cookies/angular-cookies.js"></script>
-<script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
-<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="vendor/SoundJS/lib/soundjs-0.6.0.min.js"></script>
-<script src="js/timers.js"></script>
-<script src="js/sound.js"></script>
+<script src="bower_components/es6-shim/es6-shim.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/SoundJS/lib/soundjs-0.6.0.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/timers.js"></script>
+<script src="scripts/controllers/sound.js"></script>
 </body>
 </html>

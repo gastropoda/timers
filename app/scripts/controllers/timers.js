@@ -1,9 +1,9 @@
+'use strict';
+
 var seconds = 1000;
 var minutes = 60 * seconds;
 
-var timersApp = angular.module("timers", ["ui.bootstrap", "sound"]);
-
-timersApp.controller("TimersCtrl", ["$scope", function($scope) {
+angular.module('timersApp').controller('TimersCtrl', function($scope) {
   $scope.elapsed = 0;
   $scope.remaining = 0;
   $scope.intervals = [
@@ -19,25 +19,26 @@ timersApp.controller("TimersCtrl", ["$scope", function($scope) {
 
   $scope.start = function(time) {
     total = time;
-    if (interval != null)
+    if (interval !== null) {
       clearInterval(interval);
+    }
     interval = setInterval(updateTimer, 25);
     start = Date.now();
-  }
+  };
 
   $scope.restart = function() {
     $scope.start(total);
-  }
+  };
 
-  Object.defineProperty($scope, "progress", { get: function() {
+  Object.defineProperty($scope, 'progress', { get: function() {
     return Math.min(100, 100 * (total ? $scope.elapsed / total : 0));
   }});
 
-  Object.defineProperty($scope, "restartable", { get: function() {
+  Object.defineProperty($scope, 'restartable', { get: function() {
     return !!total;
   }});
 
-  $scope.$on("TimerFinished", function() {
+  $scope.$on('TimerFinished', function() {
       clearInterval(interval);
       interval = null;
   });
@@ -48,38 +49,37 @@ timersApp.controller("TimersCtrl", ["$scope", function($scope) {
     if ($scope.remaining <= 0) {
       $scope.remaining = 0;
       $scope.elapsed = total;
-      $scope.$broadcast("TimerFinished");
+      $scope.$broadcast('TimerFinished');
     }
     $scope.$apply();
   }
-}]);
-
-timersApp.filter("time", function() {
+})
+.filter('time', function() {
   return function(input, format) {
+    function zeroPad(x, width) {
+      width = width || 2;
+      x = x.toString();
+      while (x.length < width) { x = '0' + x; }
+      return x;
+    }
+
     input = parseInt(input);
     var ms = input % seconds;
-    var min_sec = Math.floor(input / seconds);
-    var min = Math.floor(min_sec / 60);
-    var sec = min_sec % 60;
+    var minSec = Math.floor(input / seconds);
+    var min = Math.floor(minSec / 60);
+    var sec = minSec % 60;
 
     if (format) {
       return format.
-        replace("mm", zeroPad(min), "g").
-        replace("ss", zeroPad(sec), "g").
-        replace("ms", zeroPad(ms, 3), "g");
+        replace('mm', zeroPad(min), 'g').
+        replace('ss', zeroPad(sec), 'g').
+        replace('ms', zeroPad(ms, 3), 'g');
     } else {
       if (sec) {
-        return min_sec + "s";
+        return minSec + 's';
       } else {
-        return min + "m";
+        return min + 'm';
       }
     }
   };
-
-  function zeroPad(x, width) {
-    width = width || 2;
-    x = x.toString();
-    while (x.length < width) x = "0" + x;
-    return x;
-  }
 });
