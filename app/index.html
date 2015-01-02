@@ -15,6 +15,22 @@
 
       <div class="center-block">
         <div id="start-buttons" class="btn-group">
+          <div class="btn-group" dropdown>
+            <a class="btn btn-default btn-lg dropdown-toggle" dropdown-toggle>
+              <span class="glyphicon glyphicon-time"></span>
+            </a>
+            <form class="dropdown-menu" role="menu">
+              <li>
+              <!-- stop propagation prevents dropdown from closing when input is clicked on -->
+              <input type="text" placeholder="enter time"
+              ng-click="$event.stopPropagation();">
+              </li>
+              <li class="divider"></li>
+              <li ng-repeat="interval in intervals">
+                <a ng-click="">{{interval | time}}</a>
+              </li>
+            </form>
+          </div>
           <a class="btn btn-default btn-lg"
             ng-repeat="interval in intervals"
             ng-click="$parent.start(interval)">
@@ -47,7 +63,7 @@
               dropdown-toggle><span class="glyphicon glyphicon-music"</span></a>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="sound in sounds" ng-class="{active: isSelected(sound)}">
-              <a ng-click="select(sound) ; play()">{{sound.label}}</a>
+                <a ng-click="select(sound) ; play()">{{sound.label}}</a>
               </li>
             </ul>
           </div>

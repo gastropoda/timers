@@ -84,6 +84,16 @@ body {
   }
 }
 
+/* align glyphicons in buttons with text and fix buttons height */
+.glyphicon { vertical-align: -1px; }
+
+.dropdown-menu {
+  input {
+    margin: 0.5ex;
+    text-align: center;
+  }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
